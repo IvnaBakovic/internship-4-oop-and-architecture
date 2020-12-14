@@ -9,10 +9,6 @@ namespace DungeonGame.Domain.ModelsServices
     {
         int hPWarrior = 200;
         int damage = 30;
-        public bool AngerAttack { get; set; } = false;
-
-
-        public int h { get; set; } = 150;
 
         public void Update()
         {

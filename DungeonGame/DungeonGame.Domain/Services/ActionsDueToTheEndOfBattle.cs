@@ -12,6 +12,7 @@ namespace DungeonGame.Domain.Services
         {
             if (myHero.HealthPoints < 0)
             {
+                Console.WriteLine("You died!");
                 if (myHero is Mage mage)
                 {
                     mage.RessurectMaga();
@@ -21,6 +22,7 @@ namespace DungeonGame.Domain.Services
             {
                 myHero.HealthPoints += (int)Math.Ceiling(myHero.HealthPoints * 0.25);
                 myHero.Experience += myMonster.Experience;
+                Console.WriteLine("You won this battle! Monster died!");
                 Console.WriteLine("Do you want to give up half of your Experience to renew you HealthPoints? yes/no");
                 string answer = Console.ReadLine();
                 if (answer == "yes")

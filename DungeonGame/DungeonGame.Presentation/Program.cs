@@ -16,51 +16,35 @@ namespace DungeonGame.Presentation
 
             var warrior = new Warrior
             {
-                Name = nameHero,
-                //HealthPoints = 100,
-                //Damage = 10,
-            };
 
-            Console.WriteLine(warrior);
+            };
             warrior.Update();
 
             var mage = new Mage
             {
-                Name = nameHero,
-                HealthPoints = 65,
-                Damage = 20,
+
             };
+            mage.Update();
 
             var ranger = new Ranger
             {
-                Name = nameHero,
-                HealthPoints = 50,
-                Damage = 30
+
             };
+            ranger.Update();
 
             var goblin = new Goblin
             {
-                BeingAlive = true,
-                HealthPoints = 20,
-                Damage = 20,
-                Experience = 60,
             };
             goblin.Update();
+
             var witch = new Witch
             {
-                BeingAlive = true,
-                HealthPoints = 20,
-                Damage = 20,
-                Experience = 60,
 
             };
             witch.Update();
             var brute = new Brute
             {
-                BeingAlive = true,
-                HealthPoints = 20,
-                Damage = 20,
-                Experience = 60,
+
             };
             brute.Update();
 
@@ -73,55 +57,64 @@ namespace DungeonGame.Presentation
 
             };
 
-
-            var chosenHero = ChoosingHero.chooseHero(warrior, mage, ranger);
-            List<Monster> monsters = allMon.Generate(goblin, witch, brute, goblin.ProbabilityGenerator,
-    witch.ProbabilityGenerator, brute.ProbabilityGenerator);
-
-
-            for (int i = 0; i < monsters.Count; i++)
-            {
-                Console.WriteLine(i + " " + monsters[i].Name);
-            }
-            Console.WriteLine(monsters[2].Name);
-
             var RightToAttack = new FightingArena
             {
 
             };
+
+
+            var chosenHero = ChoosingHero.chooseHero(warrior, mage, ranger);
+            chosenHero.Name = nameHero;
+            List<Monster> monsters = allMon.Generate(goblin, witch, brute, goblin.ProbabilityGenerator,
+    witch.ProbabilityGenerator, brute.ProbabilityGenerator);
+
+
             int counter = 0;
+            int level = 1;
             while (chosenHero.BeingAlive == true && monsters.Count != 0)
             {
-                Console.WriteLine("ovdje si");
                 var newMonster = monsters[counter];
                 while (chosenHero.BeingAlive == true && newMonster.BeingAlive == true)
                 {
                     PrintStatusCharacter.PrintStatus(chosenHero, newMonster);
+                    Console.WriteLine("\nLevel: " + level);
                     int heroAttack = Options.EnterHeroAttack();
                     int monsterAttack = Options.AttackRandomMonster();
                     if (RightToAttack.Attack(heroAttack, monsterAttack) == 1)
                     {
-                        Console.WriteLine("Monster attacks!");
+                        Console.WriteLine("\nMonster attacks!\n");
                         MonsterAttack.AttackByMonster(newMonster, chosenHero);
                         chosenHero.isHeroAlive(chosenHero.HealthPoints);
                     }
                     else if (RightToAttack.Attack(heroAttack, monsterAttack) == 0)
                     {
-                        Console.WriteLine("You attack");
+                        Console.WriteLine("\nYou attack!\n");
                         Options.DisplayOptions(character, chosenHero, newMonster);
                         newMonster.isMonsterAlive(newMonster.HealthPoints);
                     }
                     else
                     {
-                        Console.WriteLine("It is tie!");
+                        Console.WriteLine("\nIt is tie!\n");
                     }
                 }
                 ActionsDueToTheEndOfBattle.RewardingHero(chosenHero, newMonster);
                 if (chosenHero.Experience > 100)
                 {
+                    
                     if (chosenHero is Warrior warrior1)
                     {
+                        level++;
                         warrior1.LevelUp(newMonster.Experience);
+                    }
+                    if (chosenHero is Mage mage1)
+                    {
+                        level++;
+                        mage1.LevelUp(newMonster.Experience);
+                    }
+                    if (chosenHero is Ranger ranger1)
+                    {
+                        level++;
+                        ranger1.LevelUp(newMonster.Experience);
                     }
                 }
                 goblin.Update();
@@ -129,6 +122,8 @@ namespace DungeonGame.Presentation
                 witch.Update();
                 monsters.RemoveAt(counter);
             }
+            PrintResult.PrintResultGame(chosenHero);
+
 
          }
     }

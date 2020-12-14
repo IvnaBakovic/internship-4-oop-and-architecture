@@ -7,7 +7,8 @@ namespace DungeonGame.Domain.ModelsServices
 {
     public class Ranger:Hero
     {
-        public const int hpRanger = 100;
+        int hpRanger = 100;
+        int damage = 40;
         public int CriticalChance { get; set; } = 40;
         public int StunChance { get; set; } = 0;
 
@@ -26,6 +27,14 @@ namespace DungeonGame.Domain.ModelsServices
         public void CriticalAttack(Ranger ranger, Monster monster)
         {
             monster.HealthPoints -= ranger.Damage * 2;
+        }
+        public void LevelUp(int wonExperiencePoints)
+        {
+            Experience = Experience - 100;
+            hpRanger = hpRanger + (int)Math.Ceiling(wonExperiencePoints * 0.5);
+            HealthPoints = hpRanger;
+            damage = damage + (int)Math.Ceiling(wonExperiencePoints * 0.5);
+            Damage = damage;
         }
     }
 }

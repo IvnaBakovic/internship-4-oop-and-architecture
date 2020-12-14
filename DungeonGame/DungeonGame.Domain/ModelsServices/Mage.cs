@@ -7,7 +7,8 @@ namespace DungeonGame.Domain.ModelsServices
 {
     public class Mage:Hero
     {
-        public const int hpMage = 100;
+        int hpMage = 100;
+        int damage = 30;
 
         public void Update()
         {
@@ -41,11 +42,19 @@ namespace DungeonGame.Domain.ModelsServices
                 Mana -= (int)Math.Floor(Mana * 0.1);
                 return;      
         }
+        public void LevelUp(int wonExperiencePoints)
+        {
+            Experience = Experience - 100;
+            hpMage = hpMage + (int)Math.Ceiling(wonExperiencePoints * 0.5);
+            HealthPoints = hpMage;
+            damage = damage + (int)Math.Ceiling(wonExperiencePoints * 0.5);
+            Damage = damage;
+        }
         public void RessurectMaga()
         {
             if(!BeingAlive && _firstTimeDead)
             {
-                Console.WriteLine("You died and we ressurected you!");
+                Console.WriteLine("You died first and now you ressurected!");
                 BeingAlive = true;
                 _firstTimeDead = false;
                 this.Update();
