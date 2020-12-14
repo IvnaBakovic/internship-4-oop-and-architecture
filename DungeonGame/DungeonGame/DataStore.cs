@@ -8,6 +8,5 @@ namespace DungeonGame
     {
         public static List<Hero> Heros { get; } = new List<Hero>();
         public static List<Monster> Monsters { get; } = new List<Monster>();
-        //public static List<Monster> GetMonsters { get; set; } = new List<Monster>(); 
     }
 }

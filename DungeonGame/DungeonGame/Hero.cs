@@ -4,16 +4,16 @@ using System.Text;
 
 namespace DungeonGame
 {
-    public class Hero
+    public class Hero:Character
     {
         public Hero()
         {
             DataStore.Heros.Add(this);
         }
-        public string Name { get; set; }
-        public int HealthPoints { get; set; }
-        public int Experience { get; set; } = 0;
-        public int Damage { get; set; }
+        //public string Name { get; set; }
+        //public int HealthPoints { get; set; }
+        //public int Experience { get; set; } = 0;
+        //public int Damage { get; set; }
         public bool BeingAlive { get; set; } = true;
 
         public void BeingAttackedByMonster(int damageMadeByMonster)
@@ -28,7 +28,8 @@ namespace DungeonGame
         }
         public override string ToString()
         {
-            return $"{ Name + " " + HealthPoints+ " " + Experience+ " " + Damage }";
+            return $"Hero: {base.ToString()}";
+         
         }
     }
 }
