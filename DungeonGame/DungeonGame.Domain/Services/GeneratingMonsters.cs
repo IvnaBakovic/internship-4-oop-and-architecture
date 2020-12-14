@@ -1,11 +1,17 @@
-﻿using System;
+﻿using DungeonGame.Data.Models;
+using DungeonGame.Domain.ModelsServices;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DungeonGame
+namespace DungeonGame.Domain.Services
 {
     public class GeneratingMonsters:Monster
     {
+        //public GeneratingMonsters()
+        //{
+        //    DataStore.GetMonsters = Generate(goblin, witch,brute,probabilityGoblinGenerator,probabilityWitchGenerator,probabilityBruteGenerator);
+        //}
         public List<Monster> generatedMonstersList = new List<Monster>();
 
         public List<Monster> Generate(Goblin goblin, Witch witch, Brute brute, int probabilityGoblinGenerator,

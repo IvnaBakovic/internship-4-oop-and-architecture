@@ -1,27 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
-namespace DungeonGame
+namespace DungeonGame.Data.Models
 {
-    public class Hero:Character
+    public class Monster:Character
     {
-        public Hero()
+        public Monster()
         {
-            DataStore.Heros.Add(this);
+            DataStore.Monsters.Add(this);
         }
+        public int ProbabilityGenerator { get; set; }
 
         public bool BeingAlive { get; set; } = true;
 
-        public void isHeroAlive(int healthPoints)
+        public void isMonsterAlive(int healthPoints)
         {
             if (healthPoints <= 0)
                 BeingAlive = false;
         }
+        
         public override string ToString()
         {
-            return $"Hero: {base.ToString()}";
-         
+            return $"Monster: {base.ToString()}";
         }
+
     }
 }

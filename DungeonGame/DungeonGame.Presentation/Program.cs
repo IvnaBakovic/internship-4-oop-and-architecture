@@ -1,7 +1,11 @@
-﻿using System;
+﻿using DungeonGame.Data.Models;
+using DungeonGame.Domain.Helpers;
+using DungeonGame.Domain.ModelsServices;
+using DungeonGame.Domain.Services;
+using System;
 using System.Collections.Generic;
 
-namespace DungeonGame
+namespace DungeonGame.Presentation
 {
     class Program
     {
@@ -39,7 +43,7 @@ namespace DungeonGame
                 BeingAlive = true,
                 HealthPoints = 20,
                 Damage = 20,
-                Experience=60,
+                Experience = 60,
             };
             goblin.Update();
             var witch = new Witch
@@ -69,8 +73,8 @@ namespace DungeonGame
 
             };
 
-            
-            var chosenHero = ChoosingHero.chooseHero(warrior,mage,ranger);
+
+            var chosenHero = ChoosingHero.chooseHero(warrior, mage, ranger);
             List<Monster> monsters = allMon.Generate(goblin, witch, brute, goblin.ProbabilityGenerator,
     witch.ProbabilityGenerator, brute.ProbabilityGenerator);
 
@@ -86,13 +90,13 @@ namespace DungeonGame
 
             };
             int counter = 0;
-            while (chosenHero.BeingAlive==true && monsters.Count!=0)
+            while (chosenHero.BeingAlive == true && monsters.Count != 0)
             {
                 Console.WriteLine("ovdje si");
                 var newMonster = monsters[counter];
-                while (chosenHero.BeingAlive == true && newMonster.BeingAlive==true)
+                while (chosenHero.BeingAlive == true && newMonster.BeingAlive == true)
                 {
-                    PrintStatusCharacter.PrintStatus(chosenHero,newMonster);
+                    PrintStatusCharacter.PrintStatus(chosenHero, newMonster);
                     int heroAttack = Options.EnterHeroAttack();
                     int monsterAttack = Options.AttackRandomMonster();
                     if (RightToAttack.Attack(heroAttack, monsterAttack) == 1)
@@ -104,7 +108,7 @@ namespace DungeonGame
                     else if (RightToAttack.Attack(heroAttack, monsterAttack) == 0)
                     {
                         Console.WriteLine("You attack");
-                        Options.DisplayOptions(character,chosenHero,newMonster);
+                        Options.DisplayOptions(character, chosenHero, newMonster);
                         newMonster.isMonsterAlive(newMonster.HealthPoints);
                     }
                     else
@@ -112,10 +116,10 @@ namespace DungeonGame
                         Console.WriteLine("It is tie!");
                     }
                 }
-                ActionsDueToTheEndOfBattle.RewardingHero(chosenHero,newMonster);
-                if(chosenHero.Experience>100)
+                ActionsDueToTheEndOfBattle.RewardingHero(chosenHero, newMonster);
+                if (chosenHero.Experience > 100)
                 {
-                    if(chosenHero is Warrior warrior1)
+                    if (chosenHero is Warrior warrior1)
                     {
                         warrior1.LevelUp(newMonster.Experience);
                     }
@@ -126,30 +130,6 @@ namespace DungeonGame
                 monsters.RemoveAt(counter);
             }
 
-
-            //Console.WriteLine(warrior);
-            //Console.WriteLine("Do you want enter your Health Points (y/n):");
-            //string answer = Console.ReadLine();
-            //if(answer=="y" || answer=="Y")
-            //{
-            //    Console.WriteLine("Enter your Health points: ");
-            //    int healthPoints = int.Parse(Console.ReadLine());
-            //    warrior.HealthPoints = healthPoints;
-            //}
-            //else
-            //{
-            //    Console.WriteLine("Your Health Points will be assigned to you.");
-            //}
-            //foreach (var p1 in DataStore.Heros)
-            //{
-            //    Console.WriteLine(p1);
-            //}
-            //Random random = new Random();
-            //Console.WriteLine(DataStore.Heros.Count);
-            //int listNumber = random.Next(DataStore.Heros.Count);
-            //Console.WriteLine(listNumber);
-
-
-        }
+         }
     }
 }

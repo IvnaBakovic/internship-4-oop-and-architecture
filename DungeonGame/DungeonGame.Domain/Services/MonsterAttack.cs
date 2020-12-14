@@ -1,8 +1,10 @@
-﻿using System;
+﻿using DungeonGame.Data.Models;
+using DungeonGame.Domain.ModelsServices;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DungeonGame
+namespace DungeonGame.Domain.Services
 {
     public static class MonsterAttack
     {

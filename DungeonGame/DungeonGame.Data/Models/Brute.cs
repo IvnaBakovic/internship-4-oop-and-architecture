@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DungeonGame
+namespace DungeonGame.Data.Models
 {
     public class Brute:Monster
     {
