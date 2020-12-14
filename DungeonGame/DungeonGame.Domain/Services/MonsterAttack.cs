@@ -30,18 +30,7 @@ namespace DungeonGame.Domain.Services
             }
             if(myMonster is Witch witch)
             {
-                Random rand = new Random();
-                int number = rand.Next(0, 2);
-                if (number == 0)
-                {
-                    myMonster.Attack(myMonster, myHero);
-                    return;
-                }
-                Console.WriteLine("You are under jumbus attack! Now everyone has 80 HealthPoints!");
-                myHero.HealthPoints = 80;
-                // i do not know
-                return;
-
+                myMonster.Attack(myMonster, myHero);
             }
         }
     }

@@ -8,9 +8,7 @@ namespace DungeonGame.Domain.Helpers
     {
         public int Attack(int choiceAttackHero, int randomChoiceAttackMonster)
         {
-            //if function result is 0, Hero attacks
-            //if function result is 1, Monster attacks
-            //if function resutlt is 2, it is tied
+
             if(choiceAttackHero==0 && randomChoiceAttackMonster==1)
             {
                 return 0;

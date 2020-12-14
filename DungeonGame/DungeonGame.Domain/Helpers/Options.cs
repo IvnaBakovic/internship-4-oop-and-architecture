@@ -67,7 +67,6 @@ namespace DungeonGame.Domain.Helpers
                 {
                     if (ranger.CriticalChance > 100)
                     {
-                        //attacks more one time so we have double damage
                         Console.WriteLine("Critical chance is high so hero has made double damage!");
                         characters.Attack(myHero, myMonster);
                     }

@@ -110,7 +110,6 @@ namespace DungeonGame.Presentation
             }
             PrintResult.PrintResultGame(chosenHero);
 
-
          }
     }
 }
