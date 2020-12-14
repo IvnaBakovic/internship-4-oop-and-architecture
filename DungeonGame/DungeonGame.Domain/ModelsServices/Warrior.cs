@@ -8,7 +8,7 @@ namespace DungeonGame.Domain.ModelsServices
     public class Warrior:Hero
     {
         int hPWarrior = 200;
-        int damage = 30;
+        int damage = 15;
 
         public void Update()
         {

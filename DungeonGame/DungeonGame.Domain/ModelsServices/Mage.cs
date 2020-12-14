@@ -7,28 +7,35 @@ namespace DungeonGame.Domain.ModelsServices
 {
     public class Mage:Hero
     {
+        int mana = 100;
         int hpMage = 100;
-        int damage = 30;
+        int damage = 40;
+
+        public int Mana { get; set; }
+
+        private bool _firstTimeDead = true;
 
         public void Update()
         {
+            Mana = mana;
             HealthPoints = hpMage;
-            Damage = 20;
-            Experience = 0;
+            Damage = damage;
         }
-        public int Mana { get; set; } = 50;
+        public void UpdateMana()
+        {
+            Mana = mana;
+        }
 
-        private bool _firstTimeDead = true;
         public override string ToString()
         {
-            return $"{base.ToString()} - {Mana}";
+            return $"{base.ToString()} - Mana: {Mana}";
         }
 
         public void RenewalHealthPointsInExchangedForMana()
         {
             
                 Mana -= (int)Math.Floor(Mana*0.5);
-                HealthPoints = 60;     
+                HealthPoints = hpMage;     
         }
         public void RenewHpForExp()
         {
@@ -49,6 +56,8 @@ namespace DungeonGame.Domain.ModelsServices
             HealthPoints = hpMage;
             damage = damage + (int)Math.Ceiling(wonExperiencePoints * 0.5);
             Damage = damage;
+            mana += 20;
+            Mana = mana;
         }
         public void RessurectMaga()
         {

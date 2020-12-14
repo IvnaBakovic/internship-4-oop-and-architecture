@@ -100,22 +100,8 @@ namespace DungeonGame.Presentation
                 ActionsDueToTheEndOfBattle.RewardingHero(chosenHero, newMonster);
                 if (chosenHero.Experience > 100)
                 {
-                    
-                    if (chosenHero is Warrior warrior1)
-                    {
-                        level++;
-                        warrior1.LevelUp(newMonster.Experience);
-                    }
-                    if (chosenHero is Mage mage1)
-                    {
-                        level++;
-                        mage1.LevelUp(newMonster.Experience);
-                    }
-                    if (chosenHero is Ranger ranger1)
-                    {
-                        level++;
-                        ranger1.LevelUp(newMonster.Experience);
-                    }
+                    Console.WriteLine("Now you are one level more, actually level: " + (level+1));
+                    NewLevel.LevelUp(chosenHero, newMonster, level);
                 }
                 goblin.Update();
                 brute.Update();

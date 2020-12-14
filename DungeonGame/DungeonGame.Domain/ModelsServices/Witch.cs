@@ -11,11 +11,11 @@ namespace DungeonGame.Domain.ModelsServices
         public void Update()
         {
             BeingAlive = true;
-            HealthPoints = 65;
-            Damage = 20;
+            HealthPoints = 50;
+            Damage = 15;
             Experience = 60;
-            ProbabilityGenerator = 20;
-            Name = "witch";
+            ProbabilityGenerator = 10;
+            Name = "Witch";
         }
         public void CreatingNewMonsters (GeneratingMonsters generatingMonsters, Goblin goblin, Witch witch, Brute brute, int probabilityGoblinGenerator,
             int probabilityWitchGenerator, int probabilityBruteGenerator)
@@ -29,6 +29,11 @@ namespace DungeonGame.Domain.ModelsServices
                     generatingMonsters.generatedMonstersList.Add(pickedMonster);
                 }
             }
+        }
+        public void JumbusAttack(Goblin goblin, Witch witch, Brute brute, Hero myHero)
+        {
+            //I don't know :(
+
         }
     }
 }

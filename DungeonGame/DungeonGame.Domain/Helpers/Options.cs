@@ -51,7 +51,7 @@ namespace DungeonGame.Domain.Helpers
                 else
                 {
                     Console.WriteLine("Your Mana was less than 0, so you cannot attack, but don't worry your Mana is back!");
-                    mage.Mana = 60;
+                    mage.UpdateMana();
                 }
                 if(mage.BeingAlive==false)
                 {
@@ -62,15 +62,19 @@ namespace DungeonGame.Domain.Helpers
 
             if(myHero is Ranger ranger)
             {
+                characters.Attack(myHero, myMonster);
                 if (ranger.CriticalChance > 100 || ranger.StunChance > 100)
                 {
                     if (ranger.CriticalChance > 100)
                     {
-                        Console.WriteLine("critical");
+                        //attacks more one time so we have double damage
+                        Console.WriteLine("Critical chance is high so hero has made double damage!");
+                        characters.Attack(myHero, myMonster);
                     }
                     if (ranger.StunChance > 100)
                     {
-                        Console.WriteLine("stun");
+                        Console.WriteLine("Stun chance is high so hero has immediately made damage for next round!");
+                        characters.Attack(myHero, myMonster);
                     }
                 }
                 else

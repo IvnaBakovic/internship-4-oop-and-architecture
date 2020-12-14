@@ -39,6 +39,7 @@ namespace DungeonGame.Domain.Services
                 }
                 Console.WriteLine("You are under jumbus attack! Now everyone has 80 HealthPoints!");
                 myHero.HealthPoints = 80;
+                // i do not know
                 return;
 
             }

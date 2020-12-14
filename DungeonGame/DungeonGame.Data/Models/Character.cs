@@ -13,7 +13,7 @@ namespace DungeonGame.Data.Models
 
         public override string ToString()
         {
-            return $"{"Monster: " + Name + " HP: "+ HealthPoints + " EXP: " + Experience + " DAMAGE: " + Damage }";
+            return $"{"HP: "+ HealthPoints + " EXP: " + Experience + " DAMAGE: " + Damage }";
         }
         public void Attack(Character Attacker, Character Defender)
         {

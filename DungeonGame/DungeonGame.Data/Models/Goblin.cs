@@ -9,10 +9,10 @@ namespace DungeonGame.Data.Models
         public void Update()
         {
             BeingAlive = true;
-            HealthPoints = 65;
-            Damage = 20;
-            Experience = 60;
-            ProbabilityGenerator = 50;
+            HealthPoints = 50;
+            Damage = 10;
+            Experience = 20;
+            ProbabilityGenerator = 60;
             Name = "Goblin";
         }
     }

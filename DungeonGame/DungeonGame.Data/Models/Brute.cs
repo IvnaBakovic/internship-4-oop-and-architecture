@@ -9,9 +9,9 @@ namespace DungeonGame.Data.Models
         public void Update()
         {
             BeingAlive = true;
-            HealthPoints = 65;
+            HealthPoints = 70;
             Damage = 20;
-            Experience = 60;
+            Experience = 40;
             ProbabilityGenerator = 30;
             Name = "Brute";
         }

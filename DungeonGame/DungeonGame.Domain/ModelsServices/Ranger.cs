@@ -7,10 +7,19 @@ namespace DungeonGame.Domain.ModelsServices
 {
     public class Ranger:Hero
     {
-        int hpRanger = 100;
-        int damage = 40;
-        public int CriticalChance { get; set; } = 40;
-        public int StunChance { get; set; } = 0;
+        int hpRanger = 150;
+        int damage = 30;
+        int criticalChance = 40;
+        int stunChance = 50;
+        public int CriticalChance { get; set; }
+        public int StunChance { get; set; } 
+        public void Update()
+        {
+            CriticalChance = criticalChance;
+            StunChance = stunChance;
+            HealthPoints = hpRanger;
+            Damage = damage;
+        }
 
         public override string ToString()
         {
@@ -35,6 +44,10 @@ namespace DungeonGame.Domain.ModelsServices
             HealthPoints = hpRanger;
             damage = damage + (int)Math.Ceiling(wonExperiencePoints * 0.5);
             Damage = damage;
+            criticalChance = criticalChance + (int)Math.Ceiling(criticalChance * 0.20);
+            CriticalChance = criticalChance;
+            stunChance = stunChance + (int)Math.Ceiling(criticalChance * 0.30);
+            StunChance = stunChance;
         }
     }
 }

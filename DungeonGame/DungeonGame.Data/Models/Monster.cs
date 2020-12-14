@@ -21,7 +21,7 @@ namespace DungeonGame.Data.Models
         
         public override string ToString()
         {
-            return $"Monster: {base.ToString()}";
+            return $"Monster : {Name} {base.ToString()}";
         }
 
     }

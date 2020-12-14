@@ -33,6 +33,7 @@ namespace DungeonGame.Domain.Services
                     }
                     if (myHero is Mage mage)
                     {
+                        mage.UpdateMana();
                         mage.RenewHpForExp();
 
                     }

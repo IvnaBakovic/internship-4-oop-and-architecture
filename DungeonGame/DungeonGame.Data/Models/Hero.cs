@@ -19,7 +19,7 @@ namespace DungeonGame.Data.Models
         }
         public override string ToString()
         {
-            return $"Hero: {base.ToString()}";
+            return $"Hero : {Name}  {base.ToString()}";
          
         }
     }
